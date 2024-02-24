@@ -6,8 +6,8 @@ cor3='\033[1;35m'
 clear
 scor='\033[0m'
 echo -e "\E[44;1;37m       ELEGIR   UNA   OPCION      \E[0m"
-echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINICIAR -REINICIAR Psi \033[1;31m"
-echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR PSIPHON 443 \033[1;31m    "
+echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINSTALAR UDP CUSTOM \033[1;31m"
+echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM \033[1;31m    "
 echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER PUERTOS ACTIVOS \033[1;31m      \E[0m"
 echo  -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER CODIGO TARJET \033[1;31m  "
 echo  -e  "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR PSIPHON 80 \033[1;31m  "
@@ -22,7 +22,7 @@ read n
 case $n in
         1) clear
         wget https://raw.githubusercontent.com/http-custom/udpcustom/main/folder/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp ''
-            echo -ne "\n\033[1;31mListo \033[1;33mPsiphon Iniciado o  \033[1;32mReiniciado!\033[0m"; read
+            echo -ne "\n\033[1;31mListo \033[1;33mUDP CUSTOM  \033[1;32mINSTALADO!\033[0m"; read
            ;;
         2) clear
   systemctl stop udp-custom &>/dev/null
