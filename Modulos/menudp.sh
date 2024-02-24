@@ -10,24 +10,6 @@ echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINSTALAR UDP CUSTOM \
 echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM \033[1;31m    "
 echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER PUERTOS ACTIVOS \033[1;31m      \E[0m"
 
-}
-
-# Función para esperar una opción válida
-
-wait_for_option() {
-
-    local valid_options="1 2 3 4 5 6 7"
-
-    read -p "INGRESE UNA OPCIÓN: " option
-
-    while [[ ! $valid_options =~ (^|[[:space:]])$option($|[[:space:]]) ]]; do
-
-        read -p "OPCIÓN INVÁLIDA. INGRESE UNA OPCIÓN VÁLIDA: " option
-
-    done
-
-}
-
 #leemos del teclado sentado
 read n
 
@@ -86,19 +68,3 @@ case $n in
              ;;
         *) echo "OPCION INCORREPTA ";;
 esac
-
-# Función principal para mostrar el menú y procesar las opciones
-
-main() {
-
-    local option
-
-    while true; do
-
-        show_title
-
-        show_menu
-
-        wait_for_option
-
-        case $option in
