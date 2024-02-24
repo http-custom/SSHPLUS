@@ -9,12 +9,6 @@ echo -e "\E[44;1;37m       ELEGIR   UNA   OPCION      \E[0m"
 echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINSTALAR UDP CUSTOM \033[1;31m"
 echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM \033[1;31m    "
 echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER PUERTOS ACTIVOS \033[1;31m      \E[0m"
-echo  -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER CODIGO TARJET \033[1;31m  "
-echo  -e  "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR PSIPHON 80 \033[1;31m  "
-echo  -e  "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mPROBAR VELOCIDAD \033[1;31m  "
-echo  -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mLimpiar Ram \033[1;31m"
-echo  -e "[\033[1;36m 8:\033[1;31m] \033[1;37m• \033[1;33mBorrar Psiphon \033[1;31m "
-echo  -e "[\033[1;36m 9:\033[1;31m] \033[1;37m• \033[1;33mVer Conectados \033[1;31m "
 
 #leemos del teclado sentado
 read n
