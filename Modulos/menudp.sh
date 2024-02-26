@@ -5,9 +5,9 @@ cor2='\033[0;34m'
 cor3='\033[1;35m'
 clear
 scor='\033[0m'
-echo -e "\E[44;1;37m       ELEGIR   UNA   OPCION      \E[0m"
-echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINSTSLAR UDP CUSTOM (HTTP CUSTOM) \033[1;31m"
-echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR RESQUEST (SOCKSIP TUNNEL) \033[1;31m    "
+echo -e "\E[44;1;37m       MENU UDP ELIJA EL BINARIO DE LA APP      \E[0m"
+echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mINSTALAR UDP CUSTOM (HTTP CUSTOM) \033[1;31m"
+echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST (SOCKSIP) \033[1;31m    "
 echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER PUERTOS ACTIVOS \033[1;31m      \E[0m"
 echo  -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER CODIGO TARJET \033[1;31m  "
 echo  -e  "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR PSIPHON 80 \033[1;31m  "
