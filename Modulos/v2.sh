@@ -73,7 +73,7 @@ show_menu() {
     echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATCH DE V2RAY${NC}"
     echo -e "3. ${YELLOW}👥 VER CONFIG.JSON${NC}"
     echo -e "4. ${YELLOW}ℹ️ Ver información de vmess${NC}"
-    echo -e "5. ${YELLOW}➕ Agregar nuevo usuario${NC}"
+    echo -e "5. ${YELLOW}➕ ESTATÍSTICAS DE CONSUMO${NC}"
     echo -e "6. ${YELLOW}🗑 Eliminar usuario${NC}"
     echo -e "7. ${YELLOW}🚀 Entrar al V2Ray nativo${NC}"
     echo -e "8. ${YELLOW}🔧 Instalar/Desinstalar V2Ray${NC}"
@@ -104,28 +104,12 @@ show_backup_menu() {
 
 
 add_user() {
-    read -p "Ingrese el nombre del nuevo usuario: " userName
-    read -p "Ingrese la duración en días para el nuevo usuario: " days
-
-    userId=$(uuidgen)  
-    alterId=0  
-    expiration_date=$(date -d "+$days days" +%s)  
+    
+    v2ray stats
 
     
-    print_message "${CYAN}" "UUID del nuevo usuario: ${GREEN}$userId${NC}"
-    print_message "${YELLOW}" "Fecha de expiración: ${GREEN}$(date -d "@$expiration_date" +"%d-%m-%y")${NC}"
+    v2ray
 
-    
-    userJson="{\"alterId\": $alterId, \"id\": \"$userId\", \"email\": \"$userName\", \"expiration\": $expiration_date}"
-
-    
-    jq ".inbounds[0].settings.clients += [$userJson]" $CONFIG_FILE > $CONFIG_FILE.tmp && mv $CONFIG_FILE.tmp $CONFIG_FILE
-
-    
-    echo "$userId | $userName | $days | $(date -d "@$expiration_date" +"%d-%m-%y")" >> $USERS_FILE
-
-    
-    systemctl restart v2ray
     print_message "${GREEN}" "Usuario agregado exitosamente."
 }
 
