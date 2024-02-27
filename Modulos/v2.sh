@@ -8,7 +8,7 @@ source ~/.bashrc
 
 
 CONFIG_FILE="/etc/v2ray/config.json"
-USERS_FILE="/etc/v2ray/v2clientes.txt"
+USERS_FILE="/etc/v2ray/RegV2ray"
 
 # Colores
 RED=$(tput setaf 1)
