@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Agrega el alias al archivo .bashrc
+
 echo "alias v2='/root/v2.sh'" >> ~/.bashrc
 
 
@@ -8,7 +8,8 @@ source ~/.bashrc
 
 
 CONFIG_FILE="/etc/v2ray/config.json"
-USERS_FILE="/etc/v2ray/RegV2ray"
+
+USERS_FILE="/etc/SSHPlus/RegV2ray"
 
 # Colores
 RED=$(tput setaf 1)
@@ -106,6 +107,9 @@ add_user() {
     
     v2ray stats
 
+    
+    v2ray
+
     print_message "${GREEN}" "Usuario agregado exitosamente."
 }
 
@@ -134,6 +138,9 @@ delete_user() {
     
     systemctl restart v2ray
 
+    
+    v2ray
+
     print_message "${RED}" "Usuario con ID $userId eliminado."
 }
 
@@ -146,51 +153,32 @@ create_backup() {
 }
 
  
-
 restore_backup() {
     read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
-
-    # Verificar si el archivo de respaldo existe
-    if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
-        print_message "${RED}" "Error: El archivo de respaldo no existe."
-        return 1
-    fi
-
-    # Realizar la copia de seguridad
-    cp "${backupFileName}_config.json" "$CONFIG_FILE"
-    cp "${backupFileName}_RegV2ray" "$USERS_FILE"
-
-    # Verificar si las copias de seguridad fueron exitosas
-    if [ $? -eq 0 ]; then
-        print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA CORRECTAMENTE."
-        
-        # Reiniciar el servicio V2Ray
-        systemctl restart v2ray  # Asumiendo que utilizas systemd para gestionar servicios
-        # Puedes ajustar este comando según el sistema de gestión de servicios que estés utilizando
-
-        print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
-    else
-        print_message "${RED}" "Error al restaurar la copia de seguridad."
-    fi
+    cp "$backupFileName"_config.json $CONFIG_FILE
+    cp "$backupFileName"_RegV2ray $USERS_FILE
+    print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA."
 }
-
 
 
 show_registered_users() {
     
     cat /etc/v2ray/config.json
 
+    
+    v2ray
+
     print_message "${CYAN}" "CONFIG.JSON V2RAY:"
 }
 
 
 cambiar_path() {
-    read -p "Introduce el nuevo path: " nuevo_path
+    read -p "INGRESE EL NUEVO PATCH: " nuevo_path
 
     
     jq --arg nuevo_path "$nuevo_path" '.inbounds[0].streamSettings.wsSettings.path = $nuevo_path' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 
-    echo -e "\033[33mEl path ha sido cambiado a $nuevo_path.\033[0m"
+    echo -e "\033[33mEL PATCH AH SIDO CAMBIADO A $nuevo_path.\033[0m"
 
     
     systemctl restart v2ray
