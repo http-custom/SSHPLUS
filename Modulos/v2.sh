@@ -9,7 +9,7 @@ source ~/.bashrc
 
 CONFIG_FILE="/etc/v2ray/config.json"
 
-USERS_FILE="/etc/v2ray/v2clientes.txt"
+USERS_FILE="/etc/SSHPlus/RegV2ray"
 
 # Colores
 RED=$(tput setaf 1)
@@ -177,7 +177,7 @@ delete_user() {
 create_backup() {
     read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
-    cp $USERS_FILE "$backupFileName"_v2clientes.txt
+    cp $USERS_FILE "$backupFileName"_RegV2ray
     print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
 }
 
@@ -185,7 +185,7 @@ create_backup() {
 restore_backup() {
     read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
     cp "$backupFileName"_config.json $CONFIG_FILE
-    cp "$backupFileName"_v2clientes.txt $USERS_FILE
+    cp "$backupFileName"_RegV2ray $USERS_FILE
     print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA."
 }
 
