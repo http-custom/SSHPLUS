@@ -82,9 +82,9 @@ show_menu() {
 }
 
 show_backup_menu() {
-    echo -e "${YELLOW}Opciones de v2ray backup:${NC}"
-    echo -e "1. ${GREEN}Crear copia de seguridad${NC}"
-    echo -e "2. ${RED}Restaurar copia de seguridad${NC}"
+    echo -e "${YELLOW}OPCIONES DE V2RAY BACKUP:${NC}"
+    echo -e "1. ${GREEN}CREAR COPIA DE SEGURIDAD${NC}"
+    echo -e "2. ${GREEN}RESTAURAR COPIA DE SEGURIDAD${NC}"
     echo -e "${CYAN}==========================${NC}"
     read -p "Seleccione una opción: " backupOption
 
@@ -105,9 +105,6 @@ show_backup_menu() {
 add_user() {
     
     v2ray stats
-
-    
-    v2ray
 
     print_message "${GREEN}" "Usuario agregado exitosamente."
 }
@@ -137,24 +134,21 @@ delete_user() {
     
     systemctl restart v2ray
 
-    
-    v2ray
-
     print_message "${RED}" "Usuario con ID $userId eliminado."
 }
 
  
 create_backup() {
-    read -p "Ingrese el nombre del archivo de respaldo: " backupFileName
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
     cp $USERS_FILE "$backupFileName"_RegV2ray
-    print_message "${GREEN}" "Copia de seguridad creada."
+    print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
 }
 
  
 
 restore_backup() {
-    read -p "Ingrese el nombre del archivo de respaldo: " backupFileName
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
 
     # Verificar si el archivo de respaldo existe
     if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
@@ -168,13 +162,13 @@ restore_backup() {
 
     # Verificar si las copias de seguridad fueron exitosas
     if [ $? -eq 0 ]; then
-        print_message "${GREEN}" "Copia de seguridad restaurada correctamente."
+        print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA CORRECTAMENTE."
         
         # Reiniciar el servicio V2Ray
         systemctl restart v2ray  # Asumiendo que utilizas systemd para gestionar servicios
         # Puedes ajustar este comando según el sistema de gestión de servicios que estés utilizando
 
-        print_message "${GREEN}" "Servicio V2Ray reiniciado."
+        print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
     else
         print_message "${RED}" "Error al restaurar la copia de seguridad."
     fi
@@ -185,9 +179,6 @@ restore_backup() {
 show_registered_users() {
     
     cat /etc/v2ray/config.json
-
-    
-    v2ray
 
     print_message "${CYAN}" "CONFIG.JSON V2RAY:"
 }
