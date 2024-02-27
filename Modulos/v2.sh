@@ -72,12 +72,12 @@ show_menu() {
     echo -e "1. ${GREEN}📂 GESTIÓN DE COPIAS DE SEGURIDAD UUID${NC}"
     echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATCH DE V2RAY${NC}"
     echo -e "3. ${YELLOW}👥 VER CONFIG.JSON${NC}"
-    echo -e "4. ${YELLOW}ℹ️ Ver información de vmess${NC}"
+    echo -e "4. ${YELLOW}ℹ️ VER INFORMACIÓN DE VMESS${NC}"
     echo -e "5. ${YELLOW}➕ ESTATÍSTICAS DE CONSUMO${NC}"
-    echo -e "6. ${YELLOW}🗑 Eliminar usuario${NC}"
-    echo -e "7. ${YELLOW}🚀 Entrar al V2Ray nativo${NC}"
-    echo -e "8. ${YELLOW}🔧 Instalar/Desinstalar V2Ray${NC}"
-    echo -e "9. ${YELLOW}🚪 Salir${NC}"
+    echo -e "6. ${YELLOW}🚀 ENTRAR AL V2RAY NATIVO${NC}"
+    echo -e "7. ${YELLOW}🗑 REINICIAR V2RAY${NC}"
+    echo -e "8. ${YELLOW}🔧 INSTALAR/DESINSTALAR V2RAY${NC}"
+    echo -e "9. ${YELLOW}🚪 SALIR${NC}"
     echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
     echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
 }
@@ -135,26 +135,13 @@ install_or_uninstall_v2ray() {
 
 
 delete_user() {
-    print_message "${CYAN}" "⚠️ Advertencia: los expirados Se recomienda eliminarlo manualmente con el ID⚠️ "
-    show_registered_users
-    read -p "Ingrese el ID del usuario que desea eliminar (o presione Enter para cancelar): " userId
-
-    if [ -z "$userId" ]; then
-        print_message "${YELLOW}" "No se seleccionó ningún ID. Volviendo al menú principal."
-        return
-    fi
-
-    
-    jq ".inbounds[0].settings.clients = (.inbounds[0].settings.clients | map(select(.id != \"$userId\")))" "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
-
-    
-    if [ -n "$userId" ]; then
-        sed -i "/$userId/d" "$USERS_FILE"
-        print_message "${RED}" "Usuario con ID $userId eliminado."
-    fi
-
     
     systemctl restart v2ray
+
+    
+    v2ray
+
+    print_message "${RED}" "Usuario con ID $userId eliminado."
 }
 
  
@@ -266,10 +253,10 @@ while true; do
             add_user
             ;;
         6)
-            delete_user
+            entrar_v2ray_original
             ;;
         7)
-            entrar_v2ray_original
+            delete_user
             ;;
         8)
             while true; do
