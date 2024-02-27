@@ -53,9 +53,9 @@ print_message() {
 
 check_v2ray_status() {
     if systemctl is-active --quiet v2ray; then
-        echo -e "${YELLOW}V2Ray está ${GREEN}activo${NC}"
+        echo -e "${YELLOW}V2RAT ESTÁ ${GREEN}ACTIVO${NC}"
     else
-        echo -e "${YELLOW}V2Ray está ${RED}desactivado${NC}"
+        echo -e "${YELLOW}V2RAY ESTÁ ${RED}DESACTIVADO${NC}"
     fi
 }
 
@@ -65,16 +65,16 @@ show_menu() {
     status_line=$(check_v2ray_status)
 
     echo -e "${CYAN}╔════════════════════════════════════════════════════╗${NC}"
-    echo -e "${YELLOW}          • V2Ray MENU •          ${NC}"
+    echo -e "${YELLOW}          • V2RAY MENU •          ${NC}"
     echo -e "[${status_line}]"
     echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
     echo -e "1. ${GREEN}📂 GESTIÓN DE COPIAS DE SEGURIDAD UUID${NC}"
-    echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATCH DE V2RAY${NC}"
+    echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATH DE V2RAY${NC}"
     echo -e "3. ${YELLOW}👥 VER CONFIG.JSON${NC}"
     echo -e "4. ${YELLOW}ℹ️ VER INFORMACIÓN DE VMESS${NC}"
     echo -e "5. ${YELLOW}➕ ESTATÍSTICAS DE CONSUMO${NC}"
     echo -e "6. ${YELLOW}🚀 ENTRAR AL V2RAY NATIVO${NC}"
-    echo -e "7. ${YELLOW}🗑 REINICIAR V2RAY${NC}"
+    echo -e "7. ${YELLOW}ℹ️ REINICIAR V2RAY${NC}"
     echo -e "8. ${YELLOW}🔧 INSTALAR/DESINSTALAR V2RAY${NC}"
     echo -e "9. ${YELLOW}🚪 SALIR${NC}"
     echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
@@ -185,12 +185,12 @@ show_registered_users() {
 
 
 cambiar_path() {
-    read -p "Introduce el nuevo path: " nuevo_path
+    read -p "INGRESE EL NUEVO PATH: " nuevo_path
 
     
     jq --arg nuevo_path "$nuevo_path" '.inbounds[0].streamSettings.wsSettings.path = $nuevo_path' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 
-    echo -e "\033[33mEl path ha sido cambiado a $nuevo_path.\033[0m"
+    echo -e "\033[33mEL PATH HA SIDO CAMBIADO A $nuevo_path.\033[0m"
 
     
     systemctl restart v2ray
