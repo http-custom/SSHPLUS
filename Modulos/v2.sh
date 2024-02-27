@@ -194,6 +194,8 @@ cambiar_path() {
 
     
     systemctl restart v2ray
+    
+    print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
 }
 
 
