@@ -71,7 +71,7 @@ show_menu() {
     echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
     echo -e "1. ${GREEN}📂 GESTIÓN DE COPIAS DE SEGURIDAD UUID${NC}"
     echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATCH DE V2RAY${NC}"
-    echo -e "3. ${YELLOW}👥 Ver información de usuarios${NC}"
+    echo -e "3. ${YELLOW}👥 VER CONFIG.JSON${NC}"
     echo -e "4. ${YELLOW}ℹ️ Ver información de vmess${NC}"
     echo -e "5. ${YELLOW}➕ Agregar nuevo usuario${NC}"
     echo -e "6. ${YELLOW}🗑 Eliminar usuario${NC}"
@@ -191,20 +191,13 @@ restore_backup() {
 
 
 show_registered_users() {
-    print_message "${CYAN}" "Información de Usuarios:"
-    echo "================================================================================================="
-    echo "UUID                                 Nombre                                Días   Fecha de Expiración"
-    echo "================================================================================================="
+    
+    cat /etc/v2ray/config.json
 
-    while IFS='|' read -r uuid nombre dias fecha_expiracion || [[ -n "$uuid" ]]; do
-        if [ "$dias" -ge 0 ]; then
-            color="${GREEN}"  
-        else
-            color="${RED}"    
-        fi
-        printf "%s %-37s %-36s %-6s %-10s${NC}\n" "$color" "$uuid" "$nombre" "$dias" "$fecha_expiracion"
-    done < <(sort -t'|' -k3,3nr $USERS_FILE)
-    echo "================================================================================================="
+    
+    v2ray
+
+    print_message "${CYAN}" "CONFIG.JSON V2RAY:"
 }
 
 
