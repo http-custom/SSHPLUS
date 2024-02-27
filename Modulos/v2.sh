@@ -186,38 +186,10 @@ cambiar_path() {
 
 
 show_vmess_by_uuid() {
-    show_registered_users
-    read -p "Ingrese el UUID del usuario para ver la información de vmess (presiona Enter para volver al menú principal): " userUuid
-
-    if [ -z "$userUuid" ]; then
-        print_message "${YELLOW}" "Volviendo al menú principal."
-        return
-    fi
-
-    user_info=$(grep "$userUuid" $USERS_FILE)
-
-    if [ -z "$user_info" ]; then
-        print_message "${RED}" "UUID no encontrado. Volviendo al menú principal."
-        return
-    fi
-
     
-    user_name=$(echo $user_info | awk '{print $2}')
-    expiration_date=$(date -d "@$(echo $user_info | awk '{print $4}')" +"%d-%m-%y")
+    v2ray info
 
-    
-    print_message "${CYAN}" "Información de vmess del usuario con UUID $userUuid:"
-    echo "=========================="
-    echo "Group: A"
-    echo "IP: 186.148.224.202"
-    echo "Port: 80"
-    echo "TLS: close"
-    echo "Email: $user_name"
-    echo "UUID: $userUuid"
-    echo "Alter ID: 0"
-    echo "Network: WebSocket host: ssh-fastly.panda1.store, path: privadoAR"
-    echo "TcpFastOpen: open"
-    echo "=========================="
+    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
 }
 
 
