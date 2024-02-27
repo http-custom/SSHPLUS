@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# Agrega el alias al archivo .bashrc
 echo "alias v2='/root/v2.sh'" >> ~/.bashrc
 
 
@@ -8,8 +8,7 @@ source ~/.bashrc
 
 
 CONFIG_FILE="/etc/v2ray/config.json"
-
-USERS_FILE="/etc/SSHPlus/RegV2ray"
+USERS_FILE="/etc/v2ray/v2clientes.txt"
 
 # Colores
 RED=$(tput setaf 1)
@@ -83,9 +82,9 @@ show_menu() {
 }
 
 show_backup_menu() {
-    echo -e "${YELLOW}OPCIONES DE V2RAY BACKUP:${NC}"
-    echo -e "1. ${GREEN}CREAR COPIA DE SEGURIDAD${NC}"
-    echo -e "2. ${GREEN}RESTAURAR COPIA DE SEGURIDAD${NC}"
+    echo -e "${YELLOW}Opciones de v2ray backup:${NC}"
+    echo -e "1. ${GREEN}Crear copia de seguridad${NC}"
+    echo -e "2. ${RED}Restaurar copia de seguridad${NC}"
     echo -e "${CYAN}==========================${NC}"
     read -p "Seleccione una opción: " backupOption
 
@@ -146,19 +145,41 @@ delete_user() {
 
  
 create_backup() {
-    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
+    read -p "Ingrese el nombre del archivo de respaldo: " backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
     cp $USERS_FILE "$backupFileName"_RegV2ray
-    print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
+    print_message "${GREEN}" "Copia de seguridad creada."
 }
 
  
+
 restore_backup() {
-    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
-    cp "$backupFileName"_config.json $CONFIG_FILE
-    cp "$backupFileName"_RegV2ray $USERS_FILE
-    print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA."
+    read -p "Ingrese el nombre del archivo de respaldo: " backupFileName
+
+    # Verificar si el archivo de respaldo existe
+    if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
+        print_message "${RED}" "Error: El archivo de respaldo no existe."
+        return 1
+    fi
+
+    # Realizar la copia de seguridad
+    cp "${backupFileName}_config.json" "$CONFIG_FILE"
+    cp "${backupFileName}_RegV2ray" "$USERS_FILE"
+
+    # Verificar si las copias de seguridad fueron exitosas
+    if [ $? -eq 0 ]; then
+        print_message "${GREEN}" "Copia de seguridad restaurada correctamente."
+        
+        # Reiniciar el servicio V2Ray
+        systemctl restart v2ray  # Asumiendo que utilizas systemd para gestionar servicios
+        # Puedes ajustar este comando según el sistema de gestión de servicios que estés utilizando
+
+        print_message "${GREEN}" "Servicio V2Ray reiniciado."
+    else
+        print_message "${RED}" "Error al restaurar la copia de seguridad."
+    fi
 }
+
 
 
 show_registered_users() {
@@ -173,12 +194,12 @@ show_registered_users() {
 
 
 cambiar_path() {
-    read -p "INGRESE EL NUEVO PATCH: " nuevo_path
+    read -p "Introduce el nuevo path: " nuevo_path
 
     
     jq --arg nuevo_path "$nuevo_path" '.inbounds[0].streamSettings.wsSettings.path = $nuevo_path' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 
-    echo -e "\033[33mEL PATCH AH SIDO CAMBIADO A $nuevo_path.\033[0m"
+    echo -e "\033[33mEl path ha sido cambiado a $nuevo_path.\033[0m"
 
     
     systemctl restart v2ray
