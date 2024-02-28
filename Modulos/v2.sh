@@ -53,9 +53,9 @@ print_message() {
 
 check_v2ray_status() {
     if systemctl is-active --quiet v2ray; then
-        echo -e "${YELLOW}V2RAT ESTÁ ${GREEN}ACTIVO${NC}"
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;32mACTIVO\033[0m"
     else
-        echo -e "${YELLOW}V2RAY ESTÁ ${RED}DESACTIVADO${NC}"
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;31mDESACTIVADO\033[0m"
     fi
 }
 
@@ -64,28 +64,28 @@ show_menu() {
     local status_line
     status_line=$(check_v2ray_status)
 
-    echo -e "${CYAN}╔════════════════════════════════════════════════════╗${NC}"
-    echo -e "${YELLOW}          • V2RAY MENU •          ${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\033[1;32m          • V2RAY MENU •          \033[0m"
     echo -e "[${status_line}]"
-    echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
-    echo -e "1. ${GREEN}📂 GESTIÓN DE COPIAS DE SEGURIDAD UUID${NC}"
-    echo -e "2. ${YELLOW}🔄 CAMBIAR EL PATH DE V2RAY${NC}"
-    echo -e "3. ${YELLOW}👥 VER CONFIG.JSON${NC}"
-    echo -e "4. ${YELLOW}ℹ️ VER INFORMACIÓN DE VMESS${NC}"
-    echo -e "5. ${YELLOW}➕ ESTATÍSTICAS DE CONSUMO${NC}"
-    echo -e "6. ${YELLOW}🚀 ENTRAR AL V2RAY NATIVO${NC}"
-    echo -e "7. ${YELLOW}ℹ️ REINICIAR V2RAY${NC}"
-    echo -e "8. ${YELLOW}🔧 INSTALAR/DESINSTALAR V2RAY${NC}"
-    echo -e "9. ${YELLOW}🚪 SALIR${NC}"
-    echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mCAMBIAR EL PATH DE V2RAY\033[1;31m"
+    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER CONFIG.JSON\033[1;31m"
+    echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER INFORMACIÓN DE VMESS\033[1;31m"
+    echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mESTATÍSTICAS DE CONSUMO\033[1;31m"
+    echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mENTRAR AL V2RAY NATIVO\033[1;31m"
+    echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR V2RAY\033[1;31m"
+    echo -e "[\033[1;36m 8:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR/DESINSTALAR V2RAY\033[1;31m"
+    echo -e "[\033[1;33m 9:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
 }
 
 show_backup_menu() {
-    echo -e "${YELLOW}OPCIONES DE V2RAY BACKUP:${NC}"
-    echo -e "1. ${GREEN}CREAR COPIA DE SEGURIDAD${NC}"
-    echo -e "2. ${GREEN}RESTAURAR COPIA DE SEGURIDAD${NC}"
-    echo -e "${CYAN}==========================${NC}"
+    echo -e "\033[1;32mOPCIONES DE V2RAY BACKUP:\033[0m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mCREAR COPIA DE SEGURIDAD\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mRESTAURAR COPIA DE SEGURIDAD\033[1;31m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     read -p "Seleccione una opción: " backupOption
 
     case $backupOption in
