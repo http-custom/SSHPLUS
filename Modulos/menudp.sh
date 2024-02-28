@@ -67,44 +67,41 @@ show_menu() {
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[41;1;37m                ELIJA BINARIO UDP                 \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM HTTP CUSTOM\033[1;31m"
-    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST SOCKSIP\033[1;31m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM (HTTP CUSTOM)\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST (SOCKSIP TUNNEL)\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;33m 5:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"  
 }
 
 show_backup_menu() {
 
-    show_title
+    echo
 
-    echo "INSTALANDO UDP CUSTOM ESPERE..."
+    echo -e "\033[1;32mINSTALANDO UDP CUSTOM ESPERE...\033[0m"
     
-    echo "EN CASO DE NO FUNCIONAR REINICIE LA VPS"
+    echo -e "\033[1;32mEN CASO DE NO FUNCIONAR REINICIE LA VPS\033[0m"
     
-    echo "PUERTO POR DEFECTO 1-65535"
+    echo -e "\033[1;32mPUERTO POR DEFECTO 1-65535\033[0m"
     
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  BINARIO SOLO FUNCIONA EN HTTP CUSTOM  "
+    echo -e "\033[1;33m        BINARIO SOLO FUNCIONA EN HTTP CUSTOM                 \033[0m"
 
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
     echo
 
     wget https://raw.githubusercontent.com/http-custom/udpcustom/main/folder/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp
 
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  ¡UDP CUSTOM INSTALADO!  "
+    echo -e "\033[1;32m             ¡UDP CUSTOM INSTALADO!                 \033[0m"
 
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     
     echo
-
-    wait_for_enter
 
 }
 
@@ -177,47 +174,32 @@ restore_backup() {
 
 show_registered_users() {
 
-    show_title
-
-    echo "REINICIANDO UDP CUSTOM..."
-    
-    echo " "
-    
-    echo "¡COMPLETADO!"
-
     echo
 
     start udp-custom
 
-    wait_for_enter
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    print_message "${CYAN}" "CONFIG.JSON V2RAY:"
+    echo -e "\033[1;32m             ¡UDP CUSTOM REINICIADO!                 \033[0m"
+
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    
+    echo
+
 }
 
 
 cambiar_path() {
 
-    show_title
-
-    echo "INSTALANDO BAD VPN 7300 NO ES OBLIGATORIO"
-
     echo
 
     wget https://raw.githubusercontent.com/rudi9999/SocksIP-udpServer/main/UDPserver.sh; chmod +x UDPserver.sh; ./UDPserver.sh
-
-    wait_for_enter
 
 }
 
 
 show_vmess_by_uuid() {
-
-    show_title
-
-    echo "⚠️ UDP CUSTOM FUE DESINSTALADO. ⚠️"
-
-    echo
-    
+  
   systemctl stop udp-custom &>/dev/null
   systemctl disable udp-custom &>/dev/null
   # systemctl stop udp-request &>/dev/null
@@ -243,11 +225,13 @@ show_vmess_by_uuid() {
   systemctl stop udpgw &>/dev/null
   rm -rf /usr/bin/udp
 
-    echo "⚠️ SERVICIOS DE UDP CUSTOM DETENIDOS Y ARCHIVOS ELIMINADOS. ⚠️"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    wait_for_enter
+    echo -e "\033[1;33m             ¡UDP CUSTOM DESINSTALADO!                 \033[0m"
 
-    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    
+    echo
 }
 
 
@@ -264,7 +248,7 @@ entrar_v2ray_original() {
 
 while true; do
     show_menu
-    read -p "Seleccione una opción: " opcion
+    read -p "SELECCIONE UNA OPCIÓN: " opcion
 
     case $opcion in
         1)
@@ -280,7 +264,7 @@ while true; do
             show_vmess_by_uuid
             ;;
         5)
-            echo "Saliendo..."
+            echo -e "\033[1;33mSALIENDO...\033[0m"
             exit 0  
             ;;
         *)
