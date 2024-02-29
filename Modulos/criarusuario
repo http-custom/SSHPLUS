@@ -396,5 +396,5 @@ echo "$username $sshlimiter" >>/root/usuarios.db
 	echo -e "\033[1;32mEXPIRA EN: \033[1;37m$gui"
 	echo -e "\033[1;32mLIMITE DE CONEXIONES: \033[1;37m$sshlimiter"
     echo -e "\033[1;32mUDP: \033[1;37m$IP:1-65535@$username:$password"
-    echo -e "\033[1;32mWS: \033[1;37m$unpkg.com:80@$username:$password"
+    echo -e "\033[1;32mWS: \033[1;37m$www.unpkg.com:80@$username:$password"
 }
