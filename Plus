@@ -42,7 +42,7 @@ clear; exit 1
 }
 }
 echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "SSHPLUS MANAGER ESPAÑOL " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "BEM VINDO AO SSHPLUS MANAGER" ; tput sgr0
 echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
 echo ""
 echo -e "             \033[1;31mATENCIÓN! \033[1;33mESTE SCRIPT HARÁ !\033[0m"
@@ -90,12 +90,12 @@ echo -e "\n\033[0;34m═══════════════════�
 echo ""
 echo -e "                 \033[1;33m• \033[1;31mATENCION \033[1;33m• \033[0m"
 echo ""
-echo -e "\033[1;33mUna base de Datos de Usuários \033[1;32m(usuarios.db) \033[1;33mFue"
-echo -e "Encontrada! Deseja mantenerlos preservando el limite"
-echo -e "de Coneciones simultaneas de usuários ? O Desea"
-echo -e "crear una nueva base de datos ?\033[0m"
-echo -e "\n\033[1;37m[\033[1;31m1\033[1;37m] \033[1;33mManter Base de Datos Actual\033[0m"
-echo -e "\033[1;37m[\033[1;31m2\033[1;37m] \033[1;33mCrear una Nueva Base de Datos\033[0m"
+echo -e "\033[1;33mUNA BASE DE DATOS DE USUARIOS \033[1;32m(usuarios.db) \033[1;33mFue"
+echo -e "ENCONTRADA! DESEA MANTENERLO PRESERVANDO EL LIMITE"
+echo -e "DE CONEXIONES SIMULTÁNEAS DE USUARIOS ? O DESEA"
+echo -e "CREAR UNA NUEVA BASE DE DATOS ?\033[0m"
+echo -e "\n\033[1;37m[\033[1;31m1\033[1;37m] \033[1;33mMANTENER BASE DE DATOS ACTUAL\033[0m"
+echo -e "\033[1;37m[\033[1;31m2\033[1;37m] \033[1;33mCREAR UNA NUEVA BASE DE DATOS\033[0m"
 echo -e "\n\033[0;34m═════════════════════════════════════════════════\033[0m"
 echo ""
 tput setaf 2 ; tput bold ; read -p "Opção ?: " -e -i 1 optiondb ; tput sgr0
