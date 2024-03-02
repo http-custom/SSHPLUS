@@ -265,7 +265,7 @@ while true; do
             ;;
         5)
             echo -e "\033[1;33mSALIENDO...\033[0m"
-            exit 0  
+            menu 0  
             ;;
         *)
             echo "Opción no válida. Por favor, intenta de nuevo."
