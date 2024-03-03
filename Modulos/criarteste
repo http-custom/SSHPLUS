@@ -5,7 +5,7 @@ mkdir /etc/SSHPlus/userteste
 fi
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "CREAR USUARIO TEMPORAL" ; tput sgr0
 echo ""
-[ "$(ls -A /etc/SSHPlus/userteste)" ] && echo -e "\033[1;32mUSUARIO TEMPORAL ACTIVO:\033[1;37m" || echo -e "\033[1;31mNINGÚN USUARIO TEMPORAL ACTIVO\033[0m"
+[ "$(ls -A /etc/SSHPlus/userteste)" ] && echo -e "\033[1;32mUSUARIO TEMPORAL ACTIVO:\033[1;37m" || echo -e "\033[1;33mNINGÚN USUARIO TEMPORAL ACTIVO\033[0m"
 echo ""
 for testeson in $(ls /etc/SSHPlus/userteste |sort |sed 's/.sh//g')
 do
